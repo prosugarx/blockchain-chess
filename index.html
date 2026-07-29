@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Satranç Dünyası</title>
+    
+    <!-- 1. Stil Dosyaları -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css" integrity="sha512-TU/clvRaSqKB43MX6dvJPEWV8tEGDTbmT4mdxTs6DSYsBY9zKmiw4Qeykp0nS10ndH14HRNG2VWN+IjiMfA17Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Üst Bar: Başlık ve Cüzdan -->
+        <header>
+            <h1>♟️ Web3 Satranç</h1>
+            <button id="connectWalletBtn" class="btn btn-primary">Cüzdan Bağla</button>
+            <span id="walletAddress" class="wallet-text"></span>
+        </header>
+
+        <main class="game-layout">
+            <!-- Sol Panel: Kontroller ve Liste -->
+            <div class="control-panel">
+                <!-- Oyun Kurma Alanı -->
+                <div class="card">
+                    <h3>Yeni Oyun Başlat</h3>
+                    <div class="form-group">
+                        <label>Oyun Tipi:</label>
+                        <select id="gameTypeSelect">
+                            <option value="normal">Normal (Bahissiz)</option>
+                            <option value="wagered">Bahisli (0.001 ETH)</option>
+                            <option value="single">Kendi Kendine Oyna</option>
+                        </select>
+                    </div>
+                    <button id="createGameBtn" class="btn btn-success" disabled>Oyun Kur</button>
+                </div>
+
+                <!-- Aktif Oyunları Arama/Katılma -->
+                <div class="card">
+                    <h3>Açık Oyunlara Katıl</h3>
+                    <div class="join-box">
+                        <input type="number" id="gameIdInput" placeholder="Oyun ID girin...">
+                        <button id="joinGameBtn" class="btn btn-accent" disabled>Katıl</button>
+                    </div>
+                </div>
+
+                <!-- Oyun Durumu Bilgilendirme -->
+                <div class="card status-card">
+                    <h3>Oyun Durumu</h3>
+                    <p><strong>Aktif Oyun ID:</strong> <span id="currentGameId">-</span></p>
+                    <p><strong>Sıra:</strong> <span id="gameTurn">Beyaz</span></p>
+                    <p id="gameStatusText" class="status-alert">Lütfen bir cüzdan bağlayın veya oyuna dahil olun.</p>
+                </div>
+            </div>
+
+            <!-- Sağ Panel: Satranç Tahtası -->
+            <div class="board-panel">
+                <div id="chessBoard" style="width: 100%; max-width: 500px; margin: 0 auto;"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 2. Kütüphaneler (Önce Temel Bağımlılıklar Yüklenmeli) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.17.0/ethers.umd.min.js"></script>
+    
+    <!-- 3. Senin Kodun (En Son Yüklenmeli ki Yukarıdaki Kütüphaneleri Okuyabilsin) -->
+    <script src="app.js"></script>
+</body>
+</html>

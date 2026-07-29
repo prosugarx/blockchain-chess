@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Web3 Satranç Lobisi</title>
+    <!-- Kütüphaneler -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+    <!-- Kendi CSS dosyamızı bağlıyoruz -->
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+
+    <h1>Web3 Satranç Oyunu</h1>
+    <div id="status">Sunucuya bağlanılıyor...</div>
+
+    <!-- Cüzdan Bağlantı Alanı -->
+    <div id="wallet-section" style="margin-bottom: 20px;">
+        <button id="connectWalletBtn">MetaMask Cüzdanını Bağla</button>
+        <span id="walletAddress" style="margin-left: 10px; font-weight: bold; color: gray;">Cüzdan Bağlı Değil</span>
+    </div>
+
+    <!-- Lobi Seçim Alanı -->
+    <div id="lobby-section" style="margin-bottom: 20px;">
+        <h3>Oyun Modu Seç</h3>
+        <select id="durationSelect">
+            <option value="60">1 Dakika (Hızlı)</option>
+            <option value="300" selected>5 Dakika</option>
+        </select>
+        <br><br>
+        <button id="findFreeMatchBtn">Bedava Maç Ara (Test İçin)</button>
+        <button id="findPaidMatchBtn" disabled>Bahisli Maç Ara & Bahsi Yatır</button>
+    </div>
+
+    <!-- Zamanlayıcı Alanı -->
+    <div id="timer-section" style="display: none; margin-top: 15px; font-weight: bold; font-size: 18px;">
+        ⏱️ Beyaz: <span id="whiteTime">--</span> saniye |
+        ⏱️ Siyah: <span id="blackTime">--</span> saniye
+    </div>
+    <!-- Satranç Tahtası Alanı -->
+    <div id="board" style="width: 400px; display: none; margin-top: 20px;"></div>
+
+    <!-- Kendi JS dosyamızı bağlıyoruz -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="app2.js"></script>
+</body>
+
+</html>
